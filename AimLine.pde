@@ -7,8 +7,6 @@ class AimLine {//瞄準線
   void display() {
     calculate();
     float x1=0, y1=0, x2, y2;
-    pushMatrix();
-    translate(width/2, height);//座標轉換
     for (TurnbackPoint p : pointList) {
       float num = 100;
       x2 = p.x;
@@ -23,7 +21,6 @@ class AimLine {//瞄準線
       x1 = x2;//設定現在的座標為原點
       y1 = y2;
     }
-    popMatrix();
   }
   private void calculate() {
     pointList.clear();
@@ -41,12 +38,12 @@ class AimLine {//瞄準線
     do{//先執行一次，如果沒有到最高點，則計算下個折返點
       y = -height;//目標預設為最上面
       x = (y - pointY)/m + pointX;
-      if(x >= width/4){//如果x超過範圍，改用x=邊界，計算y
-        x = width/4;
+      if(x >= width/4-bubbleRadius){//如果x超過範圍，改用x=邊界，計算y
+        x = width/4-bubbleRadius;
         y = m * (x - pointX) + pointY;
         m = -m;
-      }else if(x <= -width/4){
-        x = -width/4;
+      }else if(x <= -width/4+bubbleRadius){
+        x = -width/4+bubbleRadius;
         y = m * (x - pointX) + pointY;
         m = -m;
       }
