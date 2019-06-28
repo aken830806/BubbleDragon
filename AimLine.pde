@@ -25,7 +25,7 @@ class AimLine {//瞄準線
   private void calculate() {//計算瞄準線
     pointList.clear();
     float x,y;
-    float mx = mouseX - 400;//轉換後的mouseX
+    float mx = mouseX - (SHOOTING_AREA_X+SHOOTING_AREA_W/2);//轉換後的mouseX
     float my = mouseY - height;//轉換後的mouseY
     float pointX = 0;//線上的點
     float pointY = 0;//線上的點
