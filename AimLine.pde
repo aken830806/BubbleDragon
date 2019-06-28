@@ -43,12 +43,12 @@ class AimLine {//瞄準線
     do{//先執行一次，如果沒有到最高點，則計算下個折返點
       y = -height;//目標預設為最上面
       x = (y - pointY)/m + pointX;
-      if(x >= width/4-bubbleRadius){//如果x超過範圍，改用x=邊界，計算y
-        x = width/4-bubbleRadius;
+      if(x >= width/4-BUBBLE_RADIUS){//如果x超過範圍，改用x=邊界，計算y
+        x = width/4-BUBBLE_RADIUS;
         y = m * (x - pointX) + pointY;
         m = -m;
-      }else if(x <= -width/4+bubbleRadius){
-        x = -width/4+bubbleRadius;
+      }else if(x <= -width/4+BUBBLE_RADIUS){
+        x = -width/4+BUBBLE_RADIUS;
         y = m * (x - pointX) + pointY;
         m = -m;
       }

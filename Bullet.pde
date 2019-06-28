@@ -7,7 +7,7 @@ class Bullet{
   Bullet(){
     bubble = new Bubble(0,0);
     pointList = new ArrayList<TurnbackPoint>();
-    pointList.addAll(line.pointList);
+    pointList.addAll(aimLine.pointList);
     lineIndex = 0;
     pointIndex = 0;
   }

@@ -1,7 +1,7 @@
 class TurnbackPoint{//折返點
   float x;
   float y;
-  float radius = bubbleRadius;
+  float radius = BUBBLE_RADIUS;
   TurnbackPoint(float x,float y){
     this.x = x;
     this.y = y;
