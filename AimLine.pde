@@ -32,6 +32,11 @@ class AimLine {//瞄準線
     float m;//斜率
     if (mx != width/2) {
       m = my/mx;
+      if(m > 0 && m < 0.2){
+        m = 0.2;
+      }else if(m < 0 && m > -0.2){
+        m = -0.2;
+      }
     } else {
       m = 1;
     } 

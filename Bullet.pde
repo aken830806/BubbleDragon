@@ -23,7 +23,7 @@ class Bullet{
     }
     x2 = pointList.get(pointIndex).x;
     y2 = pointList.get(pointIndex).y;
-    pointNum = sqrt(sq(x1-x2)+sq(y1-y2))/5;//用距離決定點的數量
+    pointNum = sqrt(sq(x1-x2)+sq(y1-y2))/6;//用距離決定點的數量
     bubble.x = lerp(x1, x2, (float)lineIndex/pointNum);
     bubble.y = lerp(y1, y2, (float)lineIndex/pointNum);
     lineIndex += 1; 
