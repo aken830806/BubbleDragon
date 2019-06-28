@@ -29,10 +29,16 @@ void draw(){
   }
   bullet.display();
   if(shooting){
+    int removeIndex = -1;
     for(Bubble b:bubbleList){
       if(b.isHit()){
-        noLoop();
+        removeIndex = bubbleList.indexOf(b);
+        bullet = new Bullet();
+        shooting = false;
       }
+    }
+    if(removeIndex != -1){
+      bubbleList.remove(removeIndex);
     }
   }else{//發射時隱藏瞄準線
     aimLine.display();

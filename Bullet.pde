@@ -12,7 +12,7 @@ class Bullet{
   }
   void display(){
     ellipse(bubble.x,bubble.y,bubble.radius*2,bubble.radius*2);
-    if(shooting){
+    if(shooting && pointList.size() > 0){
       float x1,y1,x2,y2;
       if(pointIndex == 0){
         x1 = 0;
