@@ -6,7 +6,7 @@ class AimLine {//瞄準線
   }
   void display() {
     calculate();
-    float x1=0, y1=0, x2, y2;
+    float x1=0, y1=-BUBBLE_RADIUS, x2, y2;
     for (TurnbackPoint p : pointList) {
       float num = 100;
       x2 = p.x;

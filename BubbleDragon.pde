@@ -27,15 +27,16 @@ void draw(){
   for(Bubble b:bubbleList){
     b.display();
   }
+  bullet.display();
   if(shooting){
-    bullet.display();
     for(Bubble b:bubbleList){
       if(b.isHit()){
         noLoop();
       }
     }
+  }else{//發射時隱藏瞄準線
+    aimLine.display();
   }
-  aimLine.display();
   popMatrix();
   for(Text t:questionList){
     t.display();
@@ -56,10 +57,11 @@ void init(){//初始化
   answerList = new ArrayList<Text>();
   answerList.add(new Text(SHOOTING_AREA_X + SHOOTING_AREA_W + 25,10,"答案1"));
   answerList.add(new Text(SHOOTING_AREA_X + SHOOTING_AREA_W + 25,60,"答案2"));
+  bullet = new Bullet();
 }
 void mousePressed(){
   if(!shooting){
+    bullet.setPointList();
     shooting = true;
-    bullet = new Bullet();
   }
 }
