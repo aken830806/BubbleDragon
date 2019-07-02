@@ -1,3 +1,4 @@
+int questionIndex = 0;
 class Bullet{
   Bubble bubble;
   ArrayList<TurnbackPoint> pointList;
@@ -5,13 +6,14 @@ class Bullet{
   float pointNum;
   
   Bullet(){
-    bubble = new Bubble(0,-BUBBLE_RADIUS);
+    bubble = new Bubble(0,-BUBBLE_RADIUS,questionList.get(questionIndex).bubleTitle);
     pointList = new ArrayList<TurnbackPoint>();
     lineIndex = 0;
     pointIndex = 0;
+    questionIndex += 1;
   }
   void display(){
-    ellipse(bubble.x,bubble.y,bubble.radius*2,bubble.radius*2);
+    bubble.display();
     if(shooting && pointList.size() > 0){
       float x1,y1,x2,y2;
       if(pointIndex == 0){

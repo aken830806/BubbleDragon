@@ -1,12 +1,14 @@
-class Text{
+class Answer{
   float x;
   float y;
   String content;
+  String bubleTitle;
   
-  Text(float x,float y,String content){
+  Answer(float x,float y,String content,String bubleTitle){
     this.x = x;
     this.y = y;
     this.content = content;
+    this.bubleTitle = bubleTitle;
   }
   void display(){
     fill(255);
