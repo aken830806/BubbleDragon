@@ -31,15 +31,21 @@ void draw(){
     int removeIndex = -1;
     for(Bubble b:bubbleList){
       if(b.isHit()){
-        removeIndex = bubbleList.indexOf(b);
-        bullet = new Bullet();
-        shooting = false;
+        if(b.title.equals(questionList.get(questionIndex).ans)){ 
+          removeIndex = bubbleList.indexOf(b);
+          questionList.remove(questionList.get(questionIndex));//擊中移除問題
+          if(questionList.size() > 0){//尚有問題
+            bullet = new Bullet();
+          }
+          shooting = false;
+        }
       }
     }
-    if(removeIndex != -1){
+    if(removeIndex != -1){//擊中移除答案
       bubbleList.remove(removeIndex);
+      answerList.remove(removeIndex);
     }
-  }else{//發射時隱藏瞄準線
+  }else if(questionList.size() > 0){//發射時隱藏瞄準線
     aimLine.display();
   }
   bullet.display();

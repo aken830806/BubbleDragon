@@ -10,7 +10,6 @@ class Bullet{
     pointList = new ArrayList<TurnbackPoint>();
     lineIndex = 0;
     pointIndex = 0;
-    questionIndex += 1;
   }
   void display(){
     bubble.display();
