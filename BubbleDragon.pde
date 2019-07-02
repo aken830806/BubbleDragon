@@ -1,4 +1,3 @@
-ArrayList<Bubble> bubbleList;
 AimLine aimLine;
 Bullet bullet;
 ArrayList<Question> questionList;
@@ -24,16 +23,19 @@ void draw(){
   
   pushMatrix();
   translate(width/2, height);//座標轉換
-  for(Bubble b:bubbleList){
-    b.display();
+  for(Answer a:answerList){
+    a.bubble.display();
   }
   if(shooting){
     int removeIndex = -1;
-    for(Bubble b:bubbleList){
-      if(b.isHit()){
-        if(b.title.equals(questionList.get(questionIndex).ans)){ 
-          removeIndex = bubbleList.indexOf(b);
+    for(Answer a:answerList){
+      if(a.bubble.isHit()){
+        if(a.bubble.title.equals(questionList.get(questionIndex).ans)){ 
+          removeIndex = answerList.indexOf(a); //<>//
           questionList.remove(questionList.get(questionIndex));//擊中移除問題
+          for(Question q:questionList){
+            q.y += 50;
+          }
           if(questionList.size() > 0){//尚有問題
             bullet = new Bullet();
           }
@@ -42,7 +44,6 @@ void draw(){
       }
     }
     if(removeIndex != -1){//擊中移除答案
-      bubbleList.remove(removeIndex);
       answerList.remove(removeIndex);
     }
   }else if(questionList.size() > 0){//發射時隱藏瞄準線
@@ -61,17 +62,19 @@ void draw(){
   }
 }
 void init(){//初始化
-  bubbleList = new ArrayList<Bubble>();
-  bubbleList.add(new Bubble(-SHOOTING_AREA_W/2+BUBBLE_RADIUS,-height+BUBBLE_RADIUS,"A1"));
-  bubbleList.add(new Bubble(-SHOOTING_AREA_W/2+BUBBLE_RADIUS*3,-height+BUBBLE_RADIUS,"A2"));
-  bubbleList.add(new Bubble(-SHOOTING_AREA_W/2+BUBBLE_RADIUS*5,-height+BUBBLE_RADIUS,"A3"));
+  newQuestionX = 25;
+  newQuestionY = height-50;
+  newBubbleX = -SHOOTING_AREA_W/2+BUBBLE_RADIUS;
+  newBubbleY = -height+BUBBLE_RADIUS;
+  newAnswerX = SHOOTING_AREA_X + SHOOTING_AREA_W + 25;
+  newAnswerY = 10;
   aimLine = new AimLine();
   questionList = new ArrayList<Question>();
-  questionList.add(new Question(25,10,"問題1","Q1","A1"));
-  questionList.add(new Question(25,60,"問題2","Q2","A2"));
   answerList = new ArrayList<Answer>();
-  answerList.add(new Answer(SHOOTING_AREA_X + SHOOTING_AREA_W + 25,10,"答案1","A1"));
-  answerList.add(new Answer(SHOOTING_AREA_X + SHOOTING_AREA_W + 25,60,"答案2","A2"));
+  questionList.add(new Question("問題1","Q1","A1"));
+  questionList.add(new Question("問題2","Q2","A2"));
+  answerList.add(new Answer("答案1","A1"));
+  answerList.add(new Answer("答案2","A2"));
   bullet = new Bullet();
 }
 void mousePressed(){

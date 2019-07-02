@@ -1,3 +1,5 @@
+float newQuestionX;
+float newQuestionY;
 class Question{
   float x;
   float y;
@@ -5,12 +7,13 @@ class Question{
   String bubleTitle;
   String ans;
   
-  Question(float x,float y,String content,String bubleTitle,String ans){
-    this.x = x;
-    this.y = y;
+  Question(String content,String bubleTitle,String ans){
+    this.x = newQuestionX;
+    this.y = newQuestionY;
     this.content = content;
     this.bubleTitle = bubleTitle;
     this.ans = ans;
+    newQuestionY -= 50;
   }
   void display(){
     fill(255);
