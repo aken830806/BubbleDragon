@@ -1,5 +1,6 @@
 class AimLine {//瞄準線
   ArrayList<TurnbackPoint> pointList;
+  float fort_m;
 
   AimLine() {
     pointList = new ArrayList<TurnbackPoint>();
@@ -21,6 +22,12 @@ class AimLine {//瞄準線
       x1 = x2;//設定現在的座標為原點
       y1 = y2;
     }
+    pushMatrix();
+    translate(0,-BUBBLE_RADIUS);
+    rotate(atan(fort_m));
+    fill(255);
+    rect(-25,-25,50,50);
+    popMatrix();
   }
   private void calculate() {//計算瞄準線
     pointList.clear();
@@ -39,7 +46,8 @@ class AimLine {//瞄準線
       }
     } else {
       m = 1;
-    } 
+    }
+    fort_m = m;
     do{//先執行一次，如果沒有到最高點，則計算下個折返點
       y = -height;//目標預設為最上面
       x = (y - pointY)/m + pointX;

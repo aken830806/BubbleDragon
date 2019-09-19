@@ -73,8 +73,12 @@ void init(){//初始化
   answerList = new ArrayList<Answer>();
   questionList.add(new Question("問題1","Q1","A1"));
   questionList.add(new Question("問題2","Q2","A2"));
+  questionList.add(new Question("問題3","Q3","A3"));
   answerList.add(new Answer("答案1","A1"));
   answerList.add(new Answer("答案2","A2"));
+  answerList.add(new Answer("答案3","A3"));
+  answerList.add(new Answer("答案4","A4"));
+  answerList.add(new Answer("答案5","A5"));
   bullet = new Bullet();
 }
 void mousePressed(){
